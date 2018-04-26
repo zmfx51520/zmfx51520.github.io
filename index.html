@@ -250,6 +250,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/版本控制工具Git的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="紫陌飞雪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zmfx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/26/版本控制工具Git的使用/" itemprop="url">版本控制工具Git的使用（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T22:02:38+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Git和SVN的对比"><a href="#Git和SVN的对比" class="headerlink" title="Git和SVN的对比"></a>Git和SVN的对比</h2><p>1）Git是分布式的，SVN是集中式；<br>2）Git每个历史版本存储完整的文件，SVN存储文件的差异；<br>3）Git可离线完成大部分操作，SVN则必须与中央服务器进行网络交互；<br>4）Git有着优雅的分支和合并功能；<br>5）Git有着更强的撤销修改和修改版本历史的能力；<br>6）Git速度更快，效率更好；</p>
+<h2 id="Git的三个分区"><a href="#Git的三个分区" class="headerlink" title="Git的三个分区"></a>Git的三个分区</h2><h3 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h3><p>我们在站点目录下的修改添加和删除等操作都是在工作区内完成的</p>
+<h3 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h3><p>当我们把工作区内的文件git add的时候，就是把内容由工作区添加到暂存区中了</p>
+<h3 id="历史版本区"><a href="#历史版本区" class="headerlink" title="历史版本区"></a>历史版本区</h3><p>暂存区中的内容，经过git commit以后，就提交到了历史仓库区</p>
+<h2 id="Git的常用命令"><a href="#Git的常用命令" class="headerlink" title="Git的常用命令"></a>Git的常用命令</h2><h3 id="使用帮助"><a href="#使用帮助" class="headerlink" title="使用帮助"></a>使用帮助</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>输入该命令会在下方显示git常用命令的提示信息</p>
+<h3 id="配置相关的命令"><a href="#配置相关的命令" class="headerlink" title="配置相关的命令"></a>配置相关的命令</h3><h4 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global 属性名 属性值</span><br></pre></td></tr></table></figure>
+<p>添加user.name和user.email<br>git config –global user.name zmfx<br>git config –global user.email <a href="mailto:zmfx51520@outlook.com" target="_blank" rel="noopener">zmfx51520@outlook.com</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add 属性名 属性值</span><br></pre></td></tr></table></figure></p>
+<p>添加一个新的email<br>git config –global –add user.email <a href="mailto:242781365@qq.com" target="_blank" rel="noopener">242781365@qq.com</a></p>
+<h4 id="查看属性"><a href="#查看属性" class="headerlink" title="查看属性"></a>查看属性</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config  --get 属性名</span><br></pre></td></tr></table></figure>
+<p>获得配置中name属性的值，  –get 可省略<br>git config –get user.name<br>git config user.name<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config  --list --global</span><br></pre></td></tr></table></figure></p>
+<p>得到全局配置中的所有属性及属性值</p>
+<h4 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> 属性名 属性值</span><br></pre></td></tr></table></figure>
+<p>删除指定的属性名对应的属性值<br>git config –global –unset user.email <a href="mailto:242781365@qq.com" target="_blank" rel="noopener">242781365@qq.com</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> 属性名</span><br></pre></td></tr></table></figure></p>
+<p>当属性名对应的值唯一时，可以省略属性值，删除整个属性</p>
+<h3 id="版本控制相关命令"><a href="#版本控制相关命令" class="headerlink" title="版本控制相关命令"></a>版本控制相关命令</h3><h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>在站点目录下新建一个仓库</p>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>查看当前版本库的状态</p>
+<h4 id="提交工作"><a href="#提交工作" class="headerlink" title="提交工作"></a>提交工作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名</span><br></pre></td></tr></table></figure>
+<p>添加文件到暂存区<br>git add命令可以连续使用，以便添加多个<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">'提交概要'</span></span><br></pre></td></tr></table></figure></p>
+<p>将暂存区的内容提交到历史仓库区，并标识提交为 “提交概要”</p>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>查看修改的内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure></p>
+<p>查看所有提交的历史记录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=oneline 文件名</span><br></pre></td></tr></table></figure></p>
+<p>查看指定文件的所有提交历史记录<br>–pretty=oneline可以省略，这里一行一个记录只是为了显示的美观</p>
+<h4 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h4><p>这里说一下回退的机制，是通过一个HEAD指针实现的<br>回退只是将指针指向了之前的版本，而存储的内容并没有改变，<br>所以回退之后，还是可以反悔的，只需要再将指针指向更新的版本即可（当然要知道版本号）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^N</span><br></pre></td></tr></table></figure></p>
+<p>向前回退N个版本，N代表^符号的个数<br>git reset –hard HEAD^ 的意思就是回退一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号</span><br></pre></td></tr></table></figure></p>
+<p>切换到指定版本号的版本<br>版本号可以通过上面说到的 git log 命令获得<br>git reset –hard HEAD^ 的意思就是回退一个版本</p>
+<h4 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h4><h5 id="工作区撤销"><a href="#工作区撤销" class="headerlink" title="工作区撤销"></a>工作区撤销</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- 文件名</span><br></pre></td></tr></table></figure>
+<p>文件还在工作区，并未提交到暂存区，使用这个命令撤销</p>
+<h5 id="暂存区撤销"><a href="#暂存区撤销" class="headerlink" title="暂存区撤销"></a>暂存区撤销</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD 文件名</span><br><span class="line">git checkout -- 文件名</span><br></pre></td></tr></table></figure>
+<p>如果文件的修改已经提交到暂存区了，需要分两步：<br>将暂存区指定文件回退一个版本<br>然后将工作区内的修改进行撤销</p>
+<h4 id="文件删除"><a href="#文件删除" class="headerlink" title="文件删除"></a>文件删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm 文件名</span><br><span class="line">git commit -m <span class="string">'删除文件。。。'</span></span><br></pre></td></tr></table></figure>
+<p>删除文件并且提交，是真的删除文件<br>如果是手误删除 可以通过撤销修改来撤销删除 git checkout – 误删的文件名</p>
+<h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><h4 id="生成ssh"><a href="#生成ssh" class="headerlink" title="生成ssh"></a>生成ssh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C “zmfx51520@outlook.com”</span><br></pre></td></tr></table></figure>
+<p>一路回车，会在自己本机的user目录小的.ssh中生成私钥和公钥<br>将公钥复制到github的ssh中</p>
+<h4 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 远程仓库的地址（git@......）</span><br></pre></td></tr></table></figure>
+<h4 id="分支推送"><a href="#分支推送" class="headerlink" title="分支推送"></a>分支推送</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>git push 就是把当前分支(master)推送到远程<br>-u：第一次推送到master分支时，要设置了，后续就不需要再使用-u了<br>如果报 fatal:HTTP request failed 的错误<br>可以在网址中添加GitHub的用户名，执行命令为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<p>再执行命令git push -u origin master时，就不会报错了</p>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p>Git会串成一条时间线，这条时间线就是分支， 默认就是master<br>HEAD并不是指向提交，而是指向master</p>
+<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>显示  *master *代表当前所处的branch是哪个</p>
+<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br></pre></td></tr></table></figure>
+<h4 id="创建并切换"><a href="#创建并切换" class="headerlink" title="创建并切换"></a>创建并切换</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
+<p>创建dev分支，并且切换到dev分支上</p>
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<p>将dev合并到当前分支上。<br>通常是将其它分支合并到master分支上，所以一般应先切换到master分支上，再执行过此命令</p>
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -d dev</span><br></pre></td></tr></table></figure>
+<p>删除dev分支</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/String、StringBuffer以及StringBuilder的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,7 +548,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/Linux常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="紫陌飞雪">
@@ -397,7 +567,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/23/hello-world/" itemprop="url">Linux常用命令</a></h1>
+                <a class="post-title-link" href="/2018/04/23/Linux常用命令/" itemprop="url">Linux常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -575,7 +745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -588,7 +758,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
